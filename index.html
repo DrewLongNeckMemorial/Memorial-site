@@ -3,25 +3,14 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <meta name="color-scheme" content="dark light" />
-
   <title>In Loving Memory</title>
   <meta name="description" content="A memorial page to remember and share moments." />
-
-  <!-- Open Graph -->
-  <meta property="og:title" content="In Loving Memory" />
-  <meta property="og:description" content="A memorial page to remember and share moments." />
-  <meta property="og:type" content="website" />
-
   <link rel="stylesheet" href="styles.css" />
 </head>
 
 <body>
-  <a class="skip-link" href="#main">Skip to content</a>
-
   <header class="site-header">
     <div class="container header-inner">
-      <div class="mark" aria-hidden="true"></div>
       <div class="header-text">
         <p class="eyebrow">In loving memory of</p>
         <h1 class="title" id="personName">His Name</h1>
@@ -32,34 +21,27 @@
         <a href="#about">About</a>
         <a href="#gallery">Photos</a>
         <a href="#memories">Memories</a>
-        <a class="btn" href="#share">Share</a>
       </nav>
     </div>
   </header>
 
-  <main id="main">
+  <main>
     <section class="hero">
       <div class="container hero-inner">
         <div class="hero-copy">
           <h2 class="hero-title">A place to remember, share, and keep his memory close.</h2>
-          <p class="hero-sub">
-            Friends and family can share photos and stories here. This page will grow as more moments come in.
+          <p class="hero-sub" id="heroText">
+            Add a short paragraph here about why this page exists and how it will grow as more photos come in.
           </p>
-
-          <div class="hero-actions">
-            <a class="btn" href="#gallery">View photos</a>
-            <a class="btn secondary" href="#share">Share a photo or memory</a>
-          </div>
-
           <div class="note">
-            <p><strong>Note:</strong> Please only share photos and stories you have permission to share.</p>
+            <p><strong>Please share respectfully.</strong> If you’d like a photo removed, contact the page admin.</p>
           </div>
         </div>
 
         <div class="hero-card">
           <div class="portrait" role="img" aria-label="Memorial portrait placeholder"></div>
-          <p class="quote" id="personQuote">“Add a short quote, saying, or line that represents him.”</p>
-          <p class="byline" id="quoteByline">— Family & Friends</p>
+          <p class="quote" id="personQuote">“Add a short quote or saying.”</p>
+          <p class="byline">— Family & Friends</p>
         </div>
       </div>
     </section>
@@ -71,17 +53,15 @@
           <div class="card">
             <h3>Remembering him</h3>
             <p id="aboutText">
-              Add a short biography or a few paragraphs about who he was, what he loved, and the impact he had.
-              Keep it simple and personal.
+              Write a short bio or description here. You can keep this brief.
             </p>
           </div>
           <div class="card">
-            <h3>Service / details (optional)</h3>
-            <ul class="list" id="detailsList">
+            <h3>Details (optional)</h3>
+            <ul class="list">
               <li><strong>Location:</strong> City, Region</li>
-              <li><strong>Date:</strong> Month Day, Year</li>
-              <li><strong>Time:</strong> 00:00</li>
-              <li><strong>Donations:</strong> Link or charity name</li>
+              <li><strong>Service:</strong> Month Day, Year</li>
+              <li><strong>Donations:</strong> Charity name / link</li>
             </ul>
           </div>
         </div>
@@ -94,88 +74,53 @@
           <div>
             <h2 id="galleryTitle">Photos</h2>
             <p class="muted">
-              Photos are loaded from the repository’s <code>/photos</code> folder. As new photos are added, they appear here automatically.
+              This gallery is curated. Add photos by uploading files to <code>/photos</code> and editing <code>data/photos.json</code>.
             </p>
           </div>
-          <div class="stats" aria-live="polite">
+          <div class="stats">
             <span class="pill" id="photoCount">Loading…</span>
           </div>
         </div>
 
-        <div class="gallery" id="galleryGrid" aria-live="polite" aria-busy="true"></div>
+        <h3 class="subhead">Featured</h3>
+        <div class="featured" id="featuredGrid" aria-live="polite"></div>
 
-        <div class="gallery-footer">
-          <p class="muted small">
-            Tip: If you’re adding many photos, compress them for faster loading (ideal: 1600px wide, under ~1–2MB each).
-          </p>
-        </div>
+        <h3 class="subhead">All photos</h3>
+        <div class="masonry" id="masonryGrid" aria-live="polite"></div>
       </div>
     </section>
 
     <section class="section" id="memories">
       <div class="container">
         <h2>Memories</h2>
-        <p class="muted">You can add written memories here. (For new submissions, use the share link below.)</p>
+        <p class="muted">Add a few written memories here (optional).</p>
 
         <div class="memories">
           <article class="memory card">
-            <h3>A title for a memory</h3>
-            <p>
-              Write a short story, a moment, or what you want people to remember. You can duplicate this card
-              to add more memories.
-            </p>
+            <h3>A memory title</h3>
+            <p>A short story or moment.</p>
             <p class="signature">— Name</p>
           </article>
 
           <article class="memory card">
             <h3>Another memory</h3>
-            <p>
-              Keep these respectful and personal. If you’d rather collect memories via a form, you can remove
-              this section and only link to the form.
-            </p>
+            <p>Keep it respectful and personal.</p>
             <p class="signature">— Name</p>
           </article>
-        </div>
-      </div>
-    </section>
-
-    <section class="section" id="share">
-      <div class="container">
-        <div class="share card">
-          <h2>Share a photo or memory</h2>
-          <p>
-            GitHub Pages can’t accept direct uploads. The simplest approach is to collect photos via a shared link
-            (Google Drive folder) or a form (Google Form), then you (or a trusted person) add them to the repo.
-          </p>
-
-          <div class="share-actions">
-            <a class="btn" id="shareLink" href="https://example.com" target="_blank" rel="noopener">
-              Share via form / drive link
-            </a>
-            <button class="btn secondary" id="copyRepoInfo" type="button">
-              Copy instructions for contributors
-            </button>
-          </div>
-
-          <div class="muted small">
-            Suggested workflow: people submit photos → you review → add to <code>/photos</code> → push to GitHub → site updates.
-          </div>
         </div>
       </div>
     </section>
   </main>
 
   <footer class="site-footer">
-    <div class="container footer-inner">
-      <p class="muted small">
-        This memorial is maintained by family and friends. If you’d like content removed, contact the page administrator.
-      </p>
+    <div class="container">
+      <p class="muted small">Maintained by family and friends.</p>
     </div>
   </footer>
 
   <!-- Lightbox -->
   <div class="lightbox" id="lightbox" aria-hidden="true" role="dialog" aria-label="Image viewer">
-    <button class="lightbox-close" id="lightboxClose" aria-label="Close image viewer" type="button">×</button>
+    <button class="lightbox-close" id="lightboxClose" aria-label="Close" type="button">×</button>
     <img class="lightbox-img" id="lightboxImg" alt="" />
     <div class="lightbox-caption" id="lightboxCaption"></div>
   </div>
