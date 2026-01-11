@@ -10,7 +10,7 @@
 const CONFIG = {
   // REQUIRED: set these
   owner: "dreulongneckmemorial",
-  repo: "dreulongneckmemorial.github.io",
+  repo: "https://github.com/DrewLongNeckMemorial/Memorial-site/tree/main",
   branch: "main",
 
   // Folder containing images
