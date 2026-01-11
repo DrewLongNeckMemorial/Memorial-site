@@ -9,8 +9,8 @@
 
 const CONFIG = {
   // REQUIRED: set these
-  owner: "Drew Longneck",
-  repo: "Memorial",
+  owner: "dreulongneckmemorial",
+  repo: "dreulongneckmemorial.github.io",
   branch: "main",
 
   // Folder containing images
