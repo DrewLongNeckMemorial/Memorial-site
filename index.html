@@ -3,66 +3,103 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>In Loving Memory</title>
-  <meta name="description" content="A memorial page to remember and share moments." />
+
+  <title>RIP @theiraccount</title>
+  <meta name="description" content="A tribute page for a fallen Instagram account. The posts live on." />
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="RIP @theiraccount" />
+  <meta property="og:description" content="A tribute page for a fallen Instagram account. The posts live on." />
+  <meta property="og:type" content="website" />
+
   <link rel="stylesheet" href="styles.css" />
 </head>
 
 <body>
+  <a class="skip-link" href="#main">Skip to content</a>
+
   <header class="site-header">
     <div class="container header-inner">
+      <div class="mark" aria-hidden="true"></div>
+
       <div class="header-text">
-        <p class="eyebrow">In loving memory of</p>
-        <h1 class="title" id="personName">His Name</h1>
-        <p class="dates" id="personDates">Month Day, Year — Month Day, Year</p>
+        <p class="eyebrow" id="eyebrowText">In loving memory of the timeline</p>
+        <h1 class="title" id="accountName">@theiraccount</h1>
+        <p class="dates" id="accountDates">2019 — 2026 (taken down, not gone)</p>
       </div>
 
-      <nav class="nav">
-        <a href="#about">About</a>
-        <a href="#gallery">Photos</a>
-        <a href="#memories">Memories</a>
+      <nav class="nav" aria-label="Site">
+        <a href="#what">What happened</a>
+        <a href="#gallery">Posts</a>
+        <a href="#guestbook">Guestbook</a>
+        <a class="btn" href="#submit">Submit</a>
       </nav>
     </div>
   </header>
 
-  <main>
+  <main id="main">
     <section class="hero">
       <div class="container hero-inner">
         <div class="hero-copy">
-          <h2 class="hero-title">A place to remember, share, and keep his memory close.</h2>
-          <p class="hero-sub" id="heroText">
-            Add a short paragraph here about why this page exists and how it will grow as more photos come in.
+          <h2 class="hero-title" id="heroTitle">A tribute page for a fallen Instagram account.</h2>
+          <p class="hero-sub" id="heroSub">
+            The account got taken down. The content lives on here—screenshots, reposts, greatest hits.
+            This gallery updates automatically as new images are added to the repo.
           </p>
+
+          <div class="hero-actions">
+            <a class="btn" href="#gallery">View the posts</a>
+            <a class="btn secondary" href="#submit">Submit content</a>
+          </div>
+
           <div class="note">
-            <p><strong>Please share respectfully.</strong> If you’d like a photo removed, contact the page admin.</p>
+            <p>
+              <strong>House rules:</strong> Keep it jokes-only. No doxxing, no harassment, no private info, no hate.
+            </p>
           </div>
         </div>
 
         <div class="hero-card">
-          <div class="portrait" role="img" aria-label="Memorial portrait placeholder"></div>
-          <p class="quote" id="personQuote">“Add a short quote or saying.”</p>
-          <p class="byline">— Family & Friends</p>
+          <div class="portrait" role="img" aria-label="Account card placeholder">
+            <div class="handle" id="cardHandle">@theiraccount</div>
+            <div class="status" id="cardStatus">Status: Taken Down</div>
+          </div>
+          <p class="quote" id="accountQuote">“Banned but never forgotten.”</p>
+          <p class="byline" id="quoteByline">— The Group Chat</p>
         </div>
       </div>
     </section>
 
-    <section class="section" id="about">
+    <section class="section" id="what">
       <div class="container">
-        <h2>About</h2>
+        <h2>What happened</h2>
+
         <div class="two-col">
           <div class="card">
-            <h3>Remembering him</h3>
-            <p id="aboutText">
-              Write a short bio or description here. You can keep this brief.
+            <h3>The lore (allegedly)</h3>
+            <p id="loreText">
+              Replace this with the story: what the account was known for, the best running jokes, and the (funny) “cause of deletion.”
+              Keep it light and respectful.
             </p>
           </div>
+
           <div class="card">
-            <h3>Details (optional)</h3>
-            <ul class="list">
-              <li><strong>Location:</strong> City, Region</li>
-              <li><strong>Service:</strong> Month Day, Year</li>
-              <li><strong>Donations:</strong> Charity name / link</li>
+            <h3>Account stats (approx.)</h3>
+            <ul class="list" id="statsList">
+              <li><strong>Handle:</strong> <span id="statsHandle">@theiraccount</span></li>
+              <li><strong>Status:</strong> <span id="statsStatus">Taken down</span></li>
+              <li><strong>Era:</strong> <span id="statsEra">2019–2026</span></li>
+              <li><strong>Known for:</strong> <span id="statsKnownFor">add 2–5 iconic bits</span></li>
             </ul>
+          </div>
+        </div>
+
+        <div class="callout">
+          <div class="callout-inner">
+            <h3>Suggested captions</h3>
+            <p class="muted">
+              “Gone from the explore page, but not from our hearts.” · “Fly high, algorithm.” · “We’ll never forget the drafts.”
+            </p>
           </div>
         </div>
       </div>
@@ -72,55 +109,86 @@
       <div class="container">
         <div class="section-head">
           <div>
-            <h2 id="galleryTitle">Photos</h2>
+            <h2 id="galleryTitle">Posts (gallery)</h2>
             <p class="muted">
-              This gallery is curated. Add photos by uploading files to <code>/photos</code> and editing <code>data/photos.json</code>.
+              Images are loaded from the repository’s <code>/photos</code> folder. Add more images there and they show up automatically.
             </p>
           </div>
-          <div class="stats">
+          <div class="stats" aria-live="polite">
             <span class="pill" id="photoCount">Loading…</span>
           </div>
         </div>
 
-        <h3 class="subhead">Featured</h3>
-        <div class="featured" id="featuredGrid" aria-live="polite"></div>
+        <div class="gallery" id="galleryGrid" aria-live="polite" aria-busy="true"></div>
 
-        <h3 class="subhead">All photos</h3>
-        <div class="masonry" id="masonryGrid" aria-live="polite"></div>
+        <div class="gallery-footer">
+          <p class="muted small">
+            Tip: Keep images optimized (e.g., 1600px wide, ~1–2MB max). The site stays fast as the folder grows.
+          </p>
+        </div>
       </div>
     </section>
 
-    <section class="section" id="memories">
+    <section class="section" id="guestbook">
       <div class="container">
-        <h2>Memories</h2>
-        <p class="muted">Add a few written memories here (optional).</p>
+        <h2>Guestbook</h2>
+        <p class="muted">
+          Add your funniest “tributes,” quotes, and stories. You can hard-code entries here, or collect them elsewhere and paste them in.
+        </p>
 
-        <div class="memories">
+        <div class="memories" id="guestbookList">
           <article class="memory card">
-            <h3>A memory title</h3>
-            <p>A short story or moment.</p>
+            <h3>Cause of account death</h3>
+            <p>“Posted once at 3:03am and the algorithm took that personally.”</p>
             <p class="signature">— Name</p>
           </article>
 
           <article class="memory card">
-            <h3>Another memory</h3>
-            <p>Keep it respectful and personal.</p>
+            <h3>Final words</h3>
+            <p>“If you’re reading this, please clear the cache and remember me.”</p>
             <p class="signature">— Name</p>
           </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="submit">
+      <div class="container">
+        <div class="share card">
+          <h2>Submit screenshots / photos</h2>
+          <p>
+            GitHub Pages is static, so people can’t upload directly to the site. Use a submission link (Google Form or Drive folder).
+            Then you (or a trusted person) add images into <code>/photos</code> in the repo.
+          </p>
+
+          <div class="share-actions">
+            <a class="btn" id="submitLink" href="https://example.com" target="_blank" rel="noopener">
+              Open submission link
+            </a>
+            <button class="btn secondary" id="copyRepoInfo" type="button">
+              Copy contributor instructions
+            </button>
+          </div>
+
+          <div class="muted small">
+            Workflow: submit → review → add to <code>/photos</code> → push to GitHub → site updates.
+          </div>
         </div>
       </div>
     </section>
   </main>
 
   <footer class="site-footer">
-    <div class="container">
-      <p class="muted small">Maintained by family and friends.</p>
+    <div class="container footer-inner">
+      <p class="muted small">
+        Parody page. If you want an image removed, contact the page admin.
+      </p>
     </div>
   </footer>
 
   <!-- Lightbox -->
   <div class="lightbox" id="lightbox" aria-hidden="true" role="dialog" aria-label="Image viewer">
-    <button class="lightbox-close" id="lightboxClose" aria-label="Close" type="button">×</button>
+    <button class="lightbox-close" id="lightboxClose" aria-label="Close image viewer" type="button">×</button>
     <img class="lightbox-img" id="lightboxImg" alt="" />
     <div class="lightbox-caption" id="lightboxCaption"></div>
   </div>
